@@ -11,6 +11,8 @@ RUN apt-get update && apt-get install -y -t unstable \
     libcairo2-dev/unstable \
     libxt-dev
 
+RUN apt-get -y install libxml2-dev libssl-dev
+
 # Download and install shiny server
 RUN wget --no-verbose https://s3.amazonaws.com/rstudio-shiny-server-os-build/ubuntu-12.04/x86_64/VERSION -O "version.txt" && \
     VERSION=$(cat version.txt)  && \
@@ -20,10 +22,7 @@ RUN wget --no-verbose https://s3.amazonaws.com/rstudio-shiny-server-os-build/ubu
     R -e "install.packages(c('shiny', 'rmarkdown', 'ggvis', 'data.table', 'shinydashboard', 'devtools', 'RCurl'), repos='https://cran.rstudio.com/')" && \
     cp -R /usr/local/lib/R/site-library/shiny/examples/* /srv/shiny-server/
 
-RUN R -e 'options(repos="http://cran.rstudio.com/"); \
-  if(!require(devtools)) { install.packages("devtools") }; \
-  library(devtools); \
-  install_github("rstudio/packrat");'
+RUN R -e "devtools::install_github('cscheid/rgithub')"
 
 
 EXPOSE 3838
