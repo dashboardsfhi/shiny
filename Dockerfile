@@ -18,8 +18,9 @@ RUN wget --no-verbose https://s3.amazonaws.com/rstudio-shiny-server-os-build/ubu
     gdebi -n ss-latest.deb && \
     rm -f version.txt ss-latest.deb && \
     R -e "install.packages(c('shiny', 'rmarkdown', 'ggvis', 'data.table', 'shinydashboard', 'devtools', 'RCurl'), repos='https://cran.rstudio.com/')" && \
-    R -e "devtools::install_github('cscheid/rgithub')" && \
     cp -R /usr/local/lib/R/site-library/shiny/examples/* /srv/shiny-server/
+    
+RUN R -e "devtools::install_github('cscheid/rgithub')"
 
 EXPOSE 3838
 
