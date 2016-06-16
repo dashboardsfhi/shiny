@@ -23,7 +23,7 @@ RUN wget --no-verbose https://s3.amazonaws.com/rstudio-shiny-server-os-build/ubu
 RUN R -e 'options(repos="http://cran.rstudio.com/"); \
   if(!require(devtools)) { install.packages("devtools") }; \
   library(devtools); \
-  install_github("cscheid/rgithub");'
+  install_github("rstudio/packrat");'
 
 
 EXPOSE 3838
