@@ -28,6 +28,6 @@ RUN R -e "devtools::install_github('cscheid/rgithub')"
 EXPOSE 3838
 
 COPY shiny-server.sh /usr/bin/shiny-server.sh
-COPY shiny-server.conf /etc/shiny-server/chiny-server.conf
+COPY shiny-server.conf /etc/shiny-server/shiny-server.conf
 
 CMD ["/usr/bin/shiny-server.sh"]
