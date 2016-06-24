@@ -24,6 +24,7 @@ RUN wget --no-verbose https://s3.amazonaws.com/rstudio-shiny-server-os-build/ubu
 
 RUN R -e "devtools::install_github('cscheid/rgithub')"
 
+RUN R -e "install.packages(c('ineq'), repos='https://cran.rstudio.com/')" 
 
 EXPOSE 3838
 
