@@ -12,8 +12,43 @@ RUN apt-get update && apt-get install -y -t unstable \
     libxt-dev
 
 RUN apt-get -y install libxml2-dev libssl-dev
-RUN apt-get -y install r-cran-rgdal
-#RUN apt-get -y install libgdal1-dev libproj-dev
+
+## Install some external dependencies. 
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends -t unstable \
+    default-jdk \
+    default-jre \
+    gdal-bin \
+    icedtea-netx \
+    libatlas-base-dev \
+    libcairo2-dev \
+    libhunspell-dev \
+    libgsl0-dev \
+    libgdal-dev \
+    libgeos-dev \
+    libgeos-c1v5 \
+    librdf0-dev \
+    libssl-dev \
+    libmysqlclient-dev \
+    libpq-dev \
+    libsqlite3-dev \
+    librsvg2-dev \
+    libv8-dev \
+    libxcb1-dev \
+    libxdmcp-dev \
+    libxml2-dev \
+    libxslt1-dev \
+    libxt-dev \
+    mdbtools \
+    netcdf-bin \
+    qpdf \
+    r-cran-rgl \
+    ssh \
+    vim \
+  && R CMD javareconf \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/ \
+  && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
 # Download and install shiny server
 RUN wget --no-verbose https://s3.amazonaws.com/rstudio-shiny-server-os-build/ubuntu-12.04/x86_64/VERSION -O "version.txt" && \
