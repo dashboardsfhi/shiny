@@ -23,6 +23,7 @@ RUN wget --no-verbose https://s3.amazonaws.com/rstudio-shiny-server-os-build/ubu
     cp -R /usr/local/lib/R/site-library/shiny/examples/* /srv/shiny-server/
 
 RUN R -e "devtools::install_github('cscheid/rgithub')"
+RUN R -e "devtools::install_github('raubreywhite/RAWmisc')"
 
 RUN R -e "install.packages(c('ineq'), repos='https://cran.rstudio.com/')" 
 
