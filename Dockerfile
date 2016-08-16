@@ -23,7 +23,7 @@ RUN wget --no-verbose https://s3.amazonaws.com/rstudio-shiny-server-os-build/ubu
     R -e "install.packages(c('shiny', 'rmarkdown', 'ggvis', 'data.table', 'shinydashboard', 'flexdashboard', 'devtools', 'RCurl', 'readxl', 'plotly', 'DT', 'zoo', 'ggplot2'), repos='https://cran.rstudio.com/')" && \
     cp -R /usr/local/lib/R/site-library/shiny/examples/* /srv/shiny-server/
 
-RUN R -e "devtools::install_github('cscheid/rgithub')"
+RUN R -e "devtools::install_github(c('cscheid/rgithub','dashboardsfhi/dashboardgraphs'))"
 
 RUN R -e "install.packages(c('ineq','ggrepel','htmlTable'), repos='https://cran.rstudio.com/')" 
 
